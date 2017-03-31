@@ -4,7 +4,6 @@ import AppBar from 'material-ui/AppBar';
 import firebase from 'firebase';
 import FlatButton from 'material-ui/FlatButton';
 import { browserHistory } from 'react-router';
-import './appbar.css';    
 
 class AppBarExampleIcon extends React.Component {
     constructor() {
@@ -41,17 +40,17 @@ class AppBarExampleIcon extends React.Component {
         });
     }
 
-    
+
 
 
     render() {
         return (
             <div>
                 <center>
-                    <div className="BloodBanktextcenter">
-                        <AppBar 
+                    <div>
+                        <AppBar
                             title="BloodBank"
-                            iconStyleLeft={{ "display": "none" }} style={{ "backgroundColor": "#af111c" }} iconClassNameRight="muidocs-icon-navigation-expand-more"
+                            iconStyleLeft={{ "display": "none" }} style={{ "backgroundColor": "#af111c" }}
                             iconElementRight={this.state.isLogged === true ? <FlatButton label="Logout" onClick={this.logout.bind(this)} /> : void 0}
                         />
                     </div>

@@ -4,12 +4,12 @@ import ReactDOM from 'react-dom';
 import firebase from 'firebase';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import {AppBarExampleIcon,Main,Signup,Login, Home, DonateBlood, RequiredBlood } from './components';
+import { AppBarExampleIcon, Main, Signup, Login, Home, RequiredBlood, DonateBlood, Beforelogin } from './components';
 import './index.css';
 
 
-import configureStore from './store/configureStore';
-
+// import configureStore from './store/configureStore';
+import store from './store/configureStore'
 import {
   Router,
   Route,
@@ -18,15 +18,16 @@ import {
 } from 'react-router';
 
 
-const store = configureStore();
+// const store = configureStore();
 
 injectTapEventPlugin();
 
 // Initialize Firebase
- var config = {
+var config = {
     apiKey: "AIzaSyBYYIbAaPYbWsSgeKM0Muek-cK8lc9gGv4",
     authDomain: "todo-list-app-dd6f1.firebaseapp.com",
     databaseURL: "https://todo-list-app-dd6f1.firebaseio.com",
+    projectId: "todo-list-app-dd6f1",
     storageBucket: "todo-list-app-dd6f1.appspot.com",
     messagingSenderId: "291723151868"
   };
@@ -38,15 +39,15 @@ ReactDOM.render(
 
       <Router history={browserHistory}>
         <Route path="/" component={AppBarExampleIcon} >
-          <IndexRoute component={Signup} />
+          <IndexRoute component={Beforelogin} />
           <Route path="/main" component={Main} />
+          <Route path="/Signup" component={Signup} />
           <Route path="/login" component={Login} />
-          <Route path="/Home" component={Home} />
-          <Route path="/DonateBlood" component={DonateBlood} />
-          <Route path="/RequiredBlood" component={RequiredBlood} />
-          
+          <Route path="/home" component={Home} />
+          <Route path="/requiredBlood" component={RequiredBlood} />
+          <Route path="/donateblood" component={DonateBlood} />
         </Route>
-        
+
 
       </Router>
 

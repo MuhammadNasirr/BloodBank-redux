@@ -1,33 +1,36 @@
 import action from '../reducers/authReducer'
 import * as  firebase from 'firebase'
-import {browserHistory}from'react-router'
+import { browserHistory } from 'react-router'
 import actionTypes from '../reducers/actionTypes';
 
-export function signup(usersignup){
-  return dispatch=>{
-      dispatch (newUserAction)
-      firebase.auth().createUserWithEmailAndPassword(usersignup.email,usersignup.password)
+export function signup(usersignup) {
+    return dispatch => {
+        dispatch(newUserAction)
+        firebase.auth().createUserWithEmailAndPassword(usersignup.email, usersignup.password)
 
-      .then((user) => {
-        let userDetails = {
-          useremail: usersignup.email,
-        }
-        browserHistory.push('/login')
-        var userId = firebase.auth().currentUser.uid;
-        firebase.database().ref('users/'+ userId).set(userDetails)
+            .then((user) => {
+                let userDetails = {
+                    useremail: usersignup.email,
+                }
+                browserHistory.push('/login')
+                var userId = firebase.auth().currentUser.uid;
+                firebase.database().ref('users/' + userId).set(userDetails)
 
-        // firebase.database().ref('users/bloodgroup/').push({userDetails})
+                firebase.database().ref('users/' + userId).on('value', (data) => {
+                    var obj = data.val();
+                    console.log(obj)
+                })
 
-      })
+            })
 
-  }
+    }
 }
-export function SignIn(userSignIn){
-    return dispatch =>{
+export function SignIn(userSignIn) {
+    return dispatch => {
         firebase.auth()
             .signInWithEmailAndPassword(userSignIn.email, userSignIn.password)
             .then((user) => {
-                dispatch(signInUpdate());
+                dispatch(signInUpdate(user));
                 // console.log(user);
                 browserHistory.push('/home');
             })
@@ -39,24 +42,26 @@ export function SignIn(userSignIn){
             });
     }
 }
-export function signOut(){
- return dispatch=>{     
+export function signOut() {
+    return dispatch => {
         firebase.auth().signOut()
-        .then(function() {
-            dispatch(signInUpdate());
-            browserHistory.push('/signin');
-        }).catch(function(error) {
-            console.log('Server error');
-        });
-    }   
-}
-function signInUpdate(){
-    return{
-        type: actionTypes.SiginUpadte
+            .then(function () {
+                dispatch(signInUpdate());
+                browserHistory.push('/signin');
+            }).catch(function (error) {
+                console.log('Server error');
+            });
     }
 }
-function newUserAction(){
-  return{
-      type:actionTypes. GetUserInfo
-  }
+function signInUpdate(payload) {
+    // console.log(payload)
+    return {
+        type: actionTypes.SiginUpadte,
+        payload
+    }
+}
+function newUserAction() {
+    return {
+        type: actionTypes.GetUserInfo
+    }
 }

@@ -1,21 +1,59 @@
 import React, { Component } from 'react';
-import AppBar from 'material-ui/AppBar';
 import RaisedButton from 'material-ui/RaisedButton';
-import {Link} from 'react-router';
+// import firebase from 'firebase';
+// import {connect}from 'react-redux';
+import { connect } from 'react-redux'
+import { signup } from '../../actions/authaction'
 
-
+import { Link } from 'react-router';
 class Home extends Component {
+  constructor(props) {
+    super(props);
 
-    render() {
-        const style = {
-            margin: 12,
-        }
-        return (
-            <div>
-               <Link to="/DonateBlood"> <RaisedButton label="Donate Blood" secondary={true} style={style} /></Link>
-              <Link to="/RequiredBlood">  <RaisedButton label="Required Blood" secondary={true} style={style} /></Link>
-            </div>
-        )
-    }
+  }
+
+  componentWillMount() {
+    console.log(this.props.SignUp)
+
+  }
+
+  render() {
+    console.log('auht------------', this.props.authAtatus.email)
+    return (
+      <div className="App">
+        <Link to="/donateblood"><RaisedButton label="Donate Blood" secondary={true} style={{ margin: 12, backgroundColr: "pink" }} /></Link>
+        <Link to="/Requiredblood"> <RaisedButton label="Required Blood" secondary={true} style={{ margin: 12, backgroundColr: "pink" }} /></Link>
+
+        <h1>Hello home</h1>
+
+      </div>
+    );
+  }
 }
-export default Home;
+
+// function mapStateToProps(state){
+//   return{
+//     auth: state.AuthReducer
+//   }
+// }
+// function mapDispatchToProps(dispatch){
+// return{
+//   signin:(userSignin)=>{
+//    dispatch(SignIn(userSignin));
+//   }
+// }
+// }
+
+const mapStateToProps = (state) => {
+  return {
+    authAtatus: state.AuthReducer.authSignInData
+  };
+}
+// const mapDispatchToProps =(dispatch) =>{
+//     return{
+//         SignUp: (userSignUp) =>{
+//             dispatch(signup(userSignUp));
+//         }
+//     };
+// }
+export default connect(mapStateToProps)(Home);
