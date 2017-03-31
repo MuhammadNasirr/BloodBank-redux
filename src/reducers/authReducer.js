@@ -3,19 +3,21 @@ import actionTypes from './actionTypes'
 const initialState = {
     authLogOut: false,
     authSignInData: [],
-    firebaseval: {}
+    userinfo: []
 }
 
 
-const AuthReducer = (state = initialState, action) => {
+const authReducer = (state = initialState, action) =>{
     switch (action.type) {
-        // case actionTypes.GetUserInfo:
-        //     return {
+        // case actionTypes.GetUserInfo:{
+        //     return state={
         //         ...state,
         //         authLogOut: !state.authLogOut,
+        //         userinfo:action.userinfo
         //     }
-        case actionTypes.SiginUpadte: {
-            return state = {
+        // }
+        case actionTypes.SiginUpadte:{
+            return state={
                 ...state,
                 authLogOut: !state.authLogOut,
                 authSignInData: action.payload,
@@ -25,4 +27,4 @@ const AuthReducer = (state = initialState, action) => {
     }
     return state;
 }
-export default AuthReducer;
+export default authReducer;

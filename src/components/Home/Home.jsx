@@ -2,27 +2,28 @@ import React, { Component } from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 // import firebase from 'firebase';
 // import {connect}from 'react-redux';
-import { connect } from 'react-redux'
-import { signup } from '../../actions/authaction'
+import {connect}from 'react-redux'
+import {signup} from '../../actions/authaction'
 
-import { Link } from 'react-router';
+import {Link} from 'react-router';
 class Home extends Component {
-  constructor(props) {
-    super(props);
-
-  }
-
+constructor(props){
+  super(props);
+  
+} 
+  
   componentWillMount() {
     console.log(this.props.SignUp)
-
+    
   }
-
+  
   render() {
-    console.log('auht------------', this.props.authAtatus.email)
+   console.log('auht------------',this.props.authAtatus.name)
     return (
       <div className="App">
-        <Link to="/donateblood"><RaisedButton label="Donate Blood" secondary={true} style={{ margin: 12, backgroundColr: "red" }} /></Link>
-        <Link to="/Requiredblood"> <RaisedButton label="Required Blood" secondary={true} style={{ margin: 12, backgroundColr: "red" }} /></Link>
+        <Link to ="/donateblood"><RaisedButton  label="Donate Blood" secondary={true} style={{margin: 12, backgroundColr:"pink"}} /></Link>
+       <Link to ="/Requiredblood"> <RaisedButton  label="Required Blood" secondary={true} style={{margin: 12, backgroundColr:"pink"}} /></Link>
+       {this.props.authAtatus.name}     
       </div>
     );
   }
@@ -41,10 +42,10 @@ class Home extends Component {
 // }
 // }
 
-const mapStateToProps = (state) => {
-  return {
-    authAtatus: state.AuthReducer.authSignInData
-  };
+const mapStateToProps =(state) =>{
+    return{
+        authAtatus: state.AuthReducer.authSignInData
+    };
 }
 // const mapDispatchToProps =(dispatch) =>{
 //     return{
