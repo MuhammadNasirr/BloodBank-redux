@@ -7,6 +7,7 @@ export { default as Home } from './Home/home.jsx';
 export { default as RequiredBlood } from './RequiredBlood/requiredBlood.jsx';
 export { default as DonateBlood } from './DonateBlood/donateBlood.jsx';
 export { default as Beforelogin } from './Before Login/Before Login.jsx';
+export { default as Moredetails } from './Moredetails/Moredetails.jsx';
 
 
 

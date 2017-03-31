@@ -21,11 +21,8 @@ class Home extends Component {
     console.log('auht------------', this.props.authAtatus.email)
     return (
       <div className="App">
-        <Link to="/donateblood"><RaisedButton label="Donate Blood" secondary={true} style={{ margin: 12, backgroundColr: "pink" }} /></Link>
-        <Link to="/Requiredblood"> <RaisedButton label="Required Blood" secondary={true} style={{ margin: 12, backgroundColr: "pink" }} /></Link>
-
-        <h1>Hello home</h1>
-
+        <Link to="/donateblood"><RaisedButton label="Donate Blood" secondary={true} style={{ margin: 12, backgroundColr: "red" }} /></Link>
+        <Link to="/Requiredblood"> <RaisedButton label="Required Blood" secondary={true} style={{ margin: 12, backgroundColr: "red" }} /></Link>
       </div>
     );
   }

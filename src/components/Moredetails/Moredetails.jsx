@@ -11,7 +11,7 @@ import DropDownMenu from 'material-ui/DropDownMenu';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 
 
-class RequiredBlood extends React.Component {
+class Moredetails extends React.Component {
     constructor(props) {
         super(props);
 
@@ -36,20 +36,7 @@ class RequiredBlood extends React.Component {
                 <MuiThemeProvider>
                     <div>
 
-                        <Link to="/MoreDetails"><RaisedButton label="More Details" secondary={true} style={style} onClick={this._search} /></Link>
-                        <center>
-                            <DropDownMenu value={this.state.value} className="style" onChange={this.handleChange} style={styles.customWidth}>
-                                <MenuItem value={1} primaryText="O+" />
-                                <MenuItem value={2} primaryText="O-" />
-                                <MenuItem value={3} primaryText="A+" />
-                                <MenuItem value={4} primaryText="A-" />
-                                <MenuItem value={5} primaryText="B+" />
-                                <MenuItem value={6} primaryText="B-" />
-                                <MenuItem value={7} primaryText="AB+" />
-                                <MenuItem value={8} primaryText="AB-" />
-                            </DropDownMenu>
-                        </center>
-                        <br />
+                        {/*<Link to="/MoreDetails"><RaisedButton label="More Details" secondary={true} style={style} onClick={this._search} /></Link>*/}
                         <Table>
                             <TableHeader>
                                 <TableRow>
@@ -87,4 +74,4 @@ class RequiredBlood extends React.Component {
         )
     }
 }
-export default RequiredBlood;
+export default Moredetails;
