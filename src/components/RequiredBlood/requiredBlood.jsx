@@ -9,6 +9,11 @@ import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
+import { check } from '../../actions/userdetailsactions'
+
+
+import { connect } from 'react-redux';
+
 
 
 class RequiredBlood extends React.Component {
@@ -17,9 +22,14 @@ class RequiredBlood extends React.Component {
 
         // this.logout = this.logout.bind(this);
         this.state = { array: [], open: false, value: 1 };
+        this.checkfunc = this.checkfunc.bind(this);
         // this.state = {open: false};
 
 
+    }
+    checkfunc() {
+        this.props.SignUp()
+        console.log(this.props.donorInfo)
     }
     render() {
         const style = {
@@ -35,6 +45,7 @@ class RequiredBlood extends React.Component {
             <div>
                 <MuiThemeProvider>
                     <div>
+                        <FlatButton onClick={this.checkfunc.bind(this)}>Request</FlatButton>
 
                         <Link to="/MoreDetails"><RaisedButton label="More Details" secondary={true} style={style} onClick={this._search} /></Link>
                         <center>
@@ -62,12 +73,12 @@ class RequiredBlood extends React.Component {
                             </TableHeader>
 
                             <TableBody>
-                                {this.state.array.map((val, i) => {
+                                {this.props.donorInfo.map((val, i) => {
                                     return (
                                         <TableRow>
                                             <TableRowColumn key={i}>{i + 1}</TableRowColumn>
-                                            <TableRowColumn key={i}>{val.username}</TableRowColumn>
-                                            <TableRowColumn key={i}>{val.blood}</TableRowColumn>
+                                            <TableRowColumn key={i}>{val.Country}</TableRowColumn>
+                                            <TableRowColumn key={i}>{val.age}</TableRowColumn>
                                             <RaisedButton label="Request" secondary={true} style={style} />
                                         </TableRow>
 
@@ -75,9 +86,6 @@ class RequiredBlood extends React.Component {
 
 
                                 })}
-
-
-
                             </TableBody>
                         </Table>
                     </div>
@@ -87,4 +95,17 @@ class RequiredBlood extends React.Component {
         )
     }
 }
-export default RequiredBlood;
+const mapStateToProps = (state) => {
+    return {
+        donorInfo: state.donatedetailsreducer.donor,
+       
+    };
+}
+const mapDispatchToProps = (dispatch) => {
+    return {
+        SignUp: () => {
+            dispatch(check());
+        }
+    };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(RequiredBlood);

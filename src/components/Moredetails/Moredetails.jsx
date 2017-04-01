@@ -9,6 +9,9 @@ import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
+import { connect } from 'react-redux';
+import { check } from '../../actions/userdetailsactions'
+
 
 
 class Moredetails extends React.Component {
@@ -20,6 +23,10 @@ class Moredetails extends React.Component {
         // this.state = {open: false};
 
 
+    }
+    checkfunc() {
+        this.props.SignUp()
+        console.log(this.props.donorInfo)
     }
     render() {
         const style = {
@@ -35,27 +42,36 @@ class Moredetails extends React.Component {
             <div>
                 <MuiThemeProvider>
                     <div>
-
+                        <FlatButton onClick={this.checkfunc.bind(this)}>Request</FlatButton>
                         {/*<Link to="/MoreDetails"><RaisedButton label="More Details" secondary={true} style={style} onClick={this._search} /></Link>*/}
                         <Table>
                             <TableHeader>
                                 <TableRow>
                                     <TableHeaderColumn>ID</TableHeaderColumn>
-                                    <TableHeaderColumn>Name</TableHeaderColumn>
-                                    <TableHeaderColumn>Status</TableHeaderColumn>
-                                    <TableHeaderColumn>Request</TableHeaderColumn>
+                                    <TableHeaderColumn>Country</TableHeaderColumn>
+                                    <TableHeaderColumn>age</TableHeaderColumn>
+                                    <TableHeaderColumn>area</TableHeaderColumn>
+                                    <TableHeaderColumn>blood</TableHeaderColumn>
+                                    <TableHeaderColumn>city</TableHeaderColumn>
+                                    <TableHeaderColumn>Mobile Number</TableHeaderColumn>
+                                    <TableHeaderColumn>weight</TableHeaderColumn>
 
                                 </TableRow>
                             </TableHeader>
 
                             <TableBody>
-                                {this.state.array.map((val, i) => {
+                                {this.props.donorInfo.map((val, i) => {
                                     return (
                                         <TableRow>
                                             <TableRowColumn key={i}>{i + 1}</TableRowColumn>
-                                            <TableRowColumn key={i}>{val.username}</TableRowColumn>
+                                            <TableRowColumn key={i}>{val.Country}</TableRowColumn>
+                                            <TableRowColumn key={i}>{val.age}</TableRowColumn>
+                                            <TableRowColumn key={i}>{val.area}</TableRowColumn>
                                             <TableRowColumn key={i}>{val.blood}</TableRowColumn>
-                                            <RaisedButton label="Request" secondary={true} style={style} />
+                                            <TableRowColumn key={i}>{val.city}</TableRowColumn>
+                                            <TableRowColumn key={i}>{val.mobilenum}</TableRowColumn>
+                                            <TableRowColumn key={i}>{val.weight}</TableRowColumn>
+                                            {/*<RaisedButton label="Request" secondary={true} style={style} />*/}
                                         </TableRow>
 
                                     )
@@ -74,4 +90,17 @@ class Moredetails extends React.Component {
         )
     }
 }
-export default Moredetails;
+const mapStateToProps = (state) => {
+    return {
+        donorInfo: state.donatedetailsreducer.donor,
+       
+    };
+}
+const mapDispatchToProps = (dispatch) => {
+    return {
+        SignUp: () => {
+            dispatch(check());
+        }
+    };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Moredetails);

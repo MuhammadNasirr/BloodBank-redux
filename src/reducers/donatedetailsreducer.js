@@ -2,20 +2,24 @@ import actionTypes from './actionTypes'
 
 const initialState = {
     authLogOut: false,
-    authSignIn: []
+    authSignInData: [],
+    userinfo: [],
+    donor:["hello"]
 }
 
 
-export default function donordetail(state = initialState, action) {
+const donatedetailsreducer = (state = initialState, action) =>{
+    console.log(action.donorinfo)
     switch (action.type) {
-        case actionTypes.GetDonorInfo:
-            return {
+     case actionTypes.AllDonorInfo:
+            return state={
                 ...state,
-                authLogOut: !state.authLogOut
+                authLogOut: !state.authLogOut,
+                donor: action.donorinfo
             }
-        default:
-            return {
-                state
-            }
+        
+
     }
+    return state;
 }
+export default donatedetailsreducer;
