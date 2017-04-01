@@ -21,6 +21,7 @@ class Moredetails extends React.Component {
         // this.logout = this.logout.bind(this);
         this.state = { array: [], open: false, value: 1 };
         // this.state = {open: false};
+           this.props.SignUp()
 
 
     }
@@ -42,8 +43,7 @@ class Moredetails extends React.Component {
             <div>
                 <MuiThemeProvider>
                     <div>
-                        <FlatButton onClick={this.checkfunc.bind(this)}>Request</FlatButton>
-                        {/*<Link to="/MoreDetails"><RaisedButton label="More Details" secondary={true} style={style} onClick={this._search} /></Link>*/}
+                      
                         <Table>
                             <TableHeader>
                                 <TableRow>

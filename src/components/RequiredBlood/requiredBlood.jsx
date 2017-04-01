@@ -24,7 +24,7 @@ class RequiredBlood extends React.Component {
         this.state = { array: [], open: false, value: 1 };
         this.checkfunc = this.checkfunc.bind(this);
         // this.state = {open: false};
-
+           this.props.SignUp()
 
     }
     checkfunc() {
@@ -45,8 +45,7 @@ class RequiredBlood extends React.Component {
             <div>
                 <MuiThemeProvider>
                     <div>
-                        <FlatButton onClick={this.checkfunc.bind(this)}>Request</FlatButton>
-
+                     
                         <Link to="/MoreDetails"><RaisedButton label="More Details" secondary={true} style={style} onClick={this._search} /></Link>
                         <center>
                             <DropDownMenu value={this.state.value} className="style" onChange={this.handleChange} style={styles.customWidth}>

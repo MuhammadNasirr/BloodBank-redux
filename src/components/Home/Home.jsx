@@ -2,28 +2,37 @@ import React, { Component } from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 // import firebase from 'firebase';
 // import {connect}from 'react-redux';
-import {connect}from 'react-redux'
-import {signup} from '../../actions/authaction'
+import { connect } from 'react-redux'
+import { signup } from '../../actions/authaction'
+import logo from '../AppBar/Images/logo.jpg'
+import { Link } from 'react-router';
+import { check } from '../../actions/userdetailsactions'
 
-import {Link} from 'react-router';
 class Home extends Component {
-constructor(props){
-  super(props);
+  constructor(props) {
+    super(props);
   
-} 
+  } 
   
   componentWillMount() {
     console.log(this.props.SignUp)
     
   }
+  // checkfunc() {
+  //       this.props.SignUp()
+  //       console.log(this.props.donorInfo)
+  //   }
   
   render() {
-   console.log('auht------------',this.props.authAtatus.name)
+    console.log('auht------------', this.props.authAtatus.name)
     return (
       <div className="App">
-        <Link to ="/donateblood"><RaisedButton  label="Donate Blood" secondary={true} style={{margin: 12, backgroundColr:"pink"}} /></Link>
-       <Link to ="/Requiredblood"> <RaisedButton  label="Required Blood" secondary={true} style={{margin: 12, backgroundColr:"pink"}} /></Link>
-       {this.props.authAtatus.name}     
+        <Link to ="/donateblood"><RaisedButton  label="Donate Blood" secondary={true} style={{  }} style={{ margin: 12, backgroundColor: "#af111c" }} /></Link>
+        <Link to ="/Requiredblood"> <RaisedButton  label="Required Blood" secondary={true}   style={{ margin: 12,  }} /></Link>
+        <br />
+                       <img src={logo} style={{ width: "300", height: "600", alignContent: "left" , margin: "20px", opacity:0.5 }} alt="Blood Bank" />
+
+        {/*{this.props.authAtatus.name}     */}
       </div>
     );
   }
@@ -42,16 +51,17 @@ constructor(props){
 // }
 // }
 
-const mapStateToProps =(state) =>{
-    return{
+const mapStateToProps = (state) => {
+    return {
         authAtatus: state.AuthReducer.authSignInData
     };
 }
-// const mapDispatchToProps =(dispatch) =>{
-//     return{
-//         SignUp: (userSignUp) =>{
-//             dispatch(signup(userSignUp));
-//         }
-//     };
-// }
-export default connect(mapStateToProps)(Home);
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        SignUp: () => {
+            dispatch(check());
+        }
+    };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
