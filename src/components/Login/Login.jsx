@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import TextField from 'material-ui/TextField';
-import {browserHistory} from 'react-router';
+// import {browserHistory} from 'react-router';
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
 import firebase from 'firebase';

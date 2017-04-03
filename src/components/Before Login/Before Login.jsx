@@ -9,7 +9,7 @@ class Beforelogin extends Component {
     render() {
         return (
             <div>
-                <img src={logo} style={{width:"300",height:"600", alignContent:"left" , margin:"20px"}} alt="Blood Bank"/>
+                <img src={logo} style={{  height: "600", alignContent: "left" , margin: "20px" }} alt="Blood Bank" />
                 </div>
         )
     }

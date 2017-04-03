@@ -13,25 +13,6 @@ export function submit(donordetails){
     browserHistory.push('/home')}
   }
 
-//   export function donorsubmit(){
-//   return dispatch=>{
-      
-    
-//      firebase.database().ref('Bloodgroup/').on('value', (data) => {
-//             var obj = data.val();
-//             console.log("firebasedatat------",obj)
-//             dispatch(Donoraction(obj))
-//         })
-//   }
-//   }
-
-
-// function Donoraction(donordata){
-//   return{
-//       type:actionTypes. AllDonorInfo,
-//       donordata
-//   }
-// }
 function newUserAction(){
   return{
       type:actionTypes. GetDonorInfo

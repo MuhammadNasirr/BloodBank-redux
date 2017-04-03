@@ -1,4 +1,4 @@
-import action from '../reducers/authReducer'
+// import action from '../reducers/authReducer'
 import * as  firebase from 'firebase'
 import { browserHistory } from 'react-router'
 import actionTypes from '../reducers/actionTypes';

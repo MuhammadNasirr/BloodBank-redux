@@ -10,7 +10,7 @@ import MenuItem from 'material-ui/MenuItem';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import { connect } from 'react-redux';
-import { check } from '../../actions/userdetailsactions'
+import { allBlood } from '../../actions/userdetailsactions'
 
 
 
@@ -19,17 +19,15 @@ class Moredetails extends React.Component {
         super(props);
 
         // this.logout = this.logout.bind(this);
-        this.state = { array: [], open: false, value: 1 };
+        this.state = { array: [], 
+            open: false,
+             value: 1 };
         // this.state = {open: false};
-           this.props.SignUp()
-
-
-    }
-    checkfunc() {
-        this.props.SignUp()
-        console.log(this.props.donorInfo)
-    }
+          }
+  
     render() {
+          this.props.AllBlood()
+
         const style = {
             margin: 12,
         };
@@ -48,6 +46,7 @@ class Moredetails extends React.Component {
                             <TableHeader>
                                 <TableRow>
                                     <TableHeaderColumn>ID</TableHeaderColumn>
+                                    <TableHeaderColumn>Name</TableHeaderColumn>
                                     <TableHeaderColumn>Country</TableHeaderColumn>
                                     <TableHeaderColumn>age</TableHeaderColumn>
                                     <TableHeaderColumn>area</TableHeaderColumn>
@@ -60,10 +59,12 @@ class Moredetails extends React.Component {
                             </TableHeader>
 
                             <TableBody>
-                                {this.props.donorInfo.map((val, i) => {
+                                   {/*{ console.log(this.props.allinfo)}*/}
+                                {this.props.allinfo.map((val, i) => {
                                     return (
                                         <TableRow>
                                             <TableRowColumn key={i}>{i + 1}</TableRowColumn>
+                                            <TableRowColumn key={i}>{val.Name}</TableRowColumn>
                                             <TableRowColumn key={i}>{val.Country}</TableRowColumn>
                                             <TableRowColumn key={i}>{val.age}</TableRowColumn>
                                             <TableRowColumn key={i}>{val.area}</TableRowColumn>
@@ -71,7 +72,6 @@ class Moredetails extends React.Component {
                                             <TableRowColumn key={i}>{val.city}</TableRowColumn>
                                             <TableRowColumn key={i}>{val.mobilenum}</TableRowColumn>
                                             <TableRowColumn key={i}>{val.weight}</TableRowColumn>
-                                            {/*<RaisedButton label="Request" secondary={true} style={style} />*/}
                                         </TableRow>
 
                                     )
@@ -92,15 +92,17 @@ class Moredetails extends React.Component {
 }
 const mapStateToProps = (state) => {
     return {
-        donorInfo: state.donatedetailsreducer.donor,
+        allinfo: state.donatedetailsreducer.donors,
        
     };
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        SignUp: () => {
-            dispatch(check());
+        AllBlood: (blood) => {
+            // console.log(userSignin)
+            dispatch(allBlood(blood));
         }
+    
     };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Moredetails);

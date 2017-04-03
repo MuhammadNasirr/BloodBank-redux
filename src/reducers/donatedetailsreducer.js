@@ -4,21 +4,33 @@ const initialState = {
     authLogOut: false,
     authSignInData: [],
     userinfo: [],
-    donor:["hello"]
+    donor:["hello"],
+    donors:["hello"]
 }
 
 
 const donatedetailsreducer = (state = initialState, action) =>{
-    console.log(action.donorinfo)
+    // console.log(action.donorinfo)
+    //  console.log(action.allInfo)
+
     switch (action.type) {
      case actionTypes.AllDonorInfo:
             return state={
                 ...state,
                 authLogOut: !state.authLogOut,
-                donor: action.donorinfo
+                donor: action.donorinfo,
+               
             }
         
-
+   
+     case actionTypes.AllGetDonorInfo:
+            return state={
+                ...state,
+                authLogOut: !state.authLogOut,
+                donors: action.allinfo,
+               
+            }
+       
     }
     return state;
 }
