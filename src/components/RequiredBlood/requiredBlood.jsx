@@ -43,7 +43,7 @@ class RequiredBlood extends React.Component {
             <div>
                 <MuiThemeProvider>
                     <div>
-                           <Link to="/Moredetails"><RaisedButton label="Moredetails" secondary={true} /></Link>
+                           <Link to="/Moredetails"><RaisedButton label="All Donor details" secondary={true} /></Link>
                         <center>
                             <DropDownMenu value={this.state.value} className="style" onChange={this.handleBgroup.bind(this)} style={styles.customWidth}>
                                 <MenuItem value={1} primaryText="O+" />

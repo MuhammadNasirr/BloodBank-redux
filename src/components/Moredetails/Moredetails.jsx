@@ -46,7 +46,7 @@ class Moredetails extends React.Component {
         };
         return (
             <div>
-                        <RaisedButton label="Request" secondary={true} onClick={this.handleData.bind(this)} />
+                        <RaisedButton label="All Donors" secondary={true} onClick={this.handleData.bind(this)} />
                 <MuiThemeProvider>
                     <div>
                     
