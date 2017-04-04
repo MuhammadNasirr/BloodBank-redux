@@ -1,6 +1,6 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import rootReducer from '../reducers';
+// import rootReducer from '../reducers';
 import AuthReducer from '../reducers/authReducer'
 import donatedetailsreducer from '../reducers/donatedetailsreducer'
 // const configureStore = (initialState) => createStore(

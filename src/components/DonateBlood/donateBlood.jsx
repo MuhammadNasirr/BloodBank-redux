@@ -1,47 +1,35 @@
 import React from 'react';
-// import { Link } from 'react-router';
-import * as firebase from 'firebase';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { browserHistory } from 'react-router';
 import TextField from 'material-ui/TextField';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
-// import DropDownMenuSimpleExample from './dropdown'
 import { connect } from 'react-redux';
 import { submit } from '../../actions/firebaseaction'
 
-// import Home from "./home";
 class DonateBlood extends React.Component {
-
   constructor(props) {
     super(props);
     this.submit = this.submit.bind(this)
     this.state = {
       value: 1,
       blood: '',
-
     }
-
   }
-
   submit(e) {
     e.preventDefault();
     let Name = this.refs.Name.getValue();
     let Country = this.refs.Country.getValue();
     let city = this.refs.city.getValue();
     let area = this.refs.area.getValue();
-    // let gender = this.refs.gender.getValue();
     let weight = this.refs.weight.getValue();
     let age = this.refs.weight.getValue();
     let mobilenum = this.refs.mobnum.getValue();
     let blood = this.state.blood;
-
     console.log(Name, Country, city, blood, weight, mobilenum, area, age)
     let donordetails = {
       city: city,
       Country: Country,
-      // gender: this.state.gender,
       Name: Name,
       blood: this.state.blood,
       weight: weight,
@@ -51,24 +39,19 @@ class DonateBlood extends React.Component {
     }
     this.props.Submit(donordetails)
   }
-
   handleBgroup(e, key) {
     e.preventDefault();
     this.setState({
       value: key + 1,
       blood: e.target.childNodes[0].nodeValue
-
     })
     console.log(this.state.blood)
-
   }
   render() {
     return (
       <div>
         <MuiThemeProvider>
-
           <div>
-
             <div className="form">
               <h4>Donor Details</h4>
               <form onSubmit={this.submit}>
@@ -76,14 +59,11 @@ class DonateBlood extends React.Component {
                 <br />
                 <TextField hintText="Country" ref="Country" required="isRequired" /> <br />
                 <br />
-                <TextField hintText="city" ref="city"  required="isRequired"/> <br />
+                <TextField hintText="city" ref="city"  required="isRequired" /> <br />
                 <br />
                 <TextField type="text" hintText="Area" ref="area" required="isRequired" /> <br />
                 <br />
-
-                {/*<TextField type="text" hintText="Gender" ref="gender" /> <br />*/}
                 <br />
-
                 <TextField type="number" hintText="weight" ref="weight" required="isRequired" /> <br />
                 <br />
                 <TextField type="number" hintText="age" ref="age" required="isRequired" /> <br />
@@ -101,12 +81,10 @@ class DonateBlood extends React.Component {
                   <MenuItem value={9} primaryText="A-" />
                 </DropDownMenu>
                 <br />
-
                 <RaisedButton type="submit" label="Submit" primary={true} />
                 <br />
                 <br />
               </form>
-
             </div>
           </div>
         </MuiThemeProvider>
@@ -114,7 +92,6 @@ class DonateBlood extends React.Component {
     )
   }
 }
-
 function mapStateToProps(state) {
   return {
     auth: state.AuthReducer
@@ -127,6 +104,5 @@ function mapDispatchToProps(dispatch) {
     }
   }
 }
-
 export default connect(mapStateToProps, mapDispatchToProps)(DonateBlood);
 

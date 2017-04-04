@@ -7,8 +7,6 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import { AppBarExampleIcon, Main, Signup, Login, Home, RequiredBlood, DonateBlood, Beforelogin, Moredetails } from './components';
 import './index.css';
 
-
-// import configureStore from './store/configureStore';
 import store from './store/configureStore'
 import {
   Router,
@@ -17,12 +15,7 @@ import {
   browserHistory
 } from 'react-router';
 
-
-// const store = configureStore();
-
 injectTapEventPlugin();
-
-// Initialize Firebase
 var config = {
     apiKey: "AIzaSyBYYIbAaPYbWsSgeKM0Muek-cK8lc9gGv4",
     authDomain: "todo-list-app-dd6f1.firebaseapp.com",

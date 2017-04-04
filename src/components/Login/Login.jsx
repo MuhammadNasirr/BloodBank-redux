@@ -4,7 +4,7 @@ import TextField from 'material-ui/TextField';
 // import {browserHistory} from 'react-router';
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
-import firebase from 'firebase';
+// import firebase from 'firebase';
 import {SignIn} from '../../actions/authaction'
 import {connect}from 'react-redux'
 class Login extends Component {
@@ -16,7 +16,7 @@ constructor(props){
     e.preventDefault();
     var email = this.refs.email.getValue();
     var pass = this.refs.pass.getValue();
-    var demo = this.refs.demo;
+    // var demo = this.refs.demo;
    let signinDetail={
      email:email,
      password:pass

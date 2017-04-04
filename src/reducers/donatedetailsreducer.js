@@ -4,34 +4,31 @@ const initialState = {
     authLogOut: false,
     authSignInData: [],
     userinfo: [],
-    donor:["hello"],
-    donors:["hello"]
+    donor: ["hello"],
+    donors: ["hello"]
 }
 
 
-const donatedetailsreducer = (state = initialState, action) =>{
+const donatedetailsreducer = (state = initialState, action) => {
     // console.log(action.donorinfo)
-    //  console.log(action.allInfo)
+     console.log(action.allInfo)
 
     switch (action.type) {
-     case actionTypes.AllDonorInfo:
-            return state={
+        case actionTypes.AllDonorInfo:
+            return state = {
                 ...state,
                 authLogOut: !state.authLogOut,
                 donor: action.donorinfo,
-               
             }
-        
-   
-     case actionTypes.AllGetDonorInfo:
-            return state={
+        case actionTypes.AllGetDonorInfo:
+            return state = {
                 ...state,
                 authLogOut: !state.authLogOut,
                 donors: action.allinfo,
-               
             }
-       
+       default:{
+    return state;}
     }
-    return state;
+    
 }
 export default donatedetailsreducer;

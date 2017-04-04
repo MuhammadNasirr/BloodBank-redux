@@ -6,9 +6,10 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { browserHistory, Link } from 'react-router';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
-import RaisedButton from 'material-ui/RaisedButton';
+// import RaisedButton from 'material-ui/RaisedButton';
 import logo from './Images/logo.jpg';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+// import { browserHistory } from 'react-router';
 
 
 
@@ -47,6 +48,7 @@ class AppBarExampleIcon extends React.Component {
             // An error happened.
         });
     }
+   
 
 
 
@@ -77,8 +79,7 @@ class AppBarExampleIcon extends React.Component {
                                 title="Blood Bank"
                                 iconStyleLeft={this.state.isLogged === false ? { "display": "none" } : void 0}
                                 style={{ "backgroundColor": "#af111c" }}
-                                iconClassNameRight="muidocs-icon-navigation-expand-more" onTouchTap={this.handleToggle}
-
+                                onTouchTap={this.handleToggle}
                                 iconElementRight={
                                     <div style={styles.headerButton}>
                                         {this.state.isLogged === false ?
@@ -101,7 +102,8 @@ class AppBarExampleIcon extends React.Component {
                                                     <Link to="/RequiredBlood"><MenuItem>Available Blood</MenuItem></Link>
                                                       <p>{this.props.authAtatus.name}</p> 
                                                 </Drawer>
-                                                <FlatButton label="Logout" style={styles.button} onClick={this.logout.bind(this)} /></div> : void 0}
+                                                <FlatButton label="Logout" style={styles.button} onClick={this.logout.bind(this)} />
+                                                <FlatButton label="Back" style={styles.button} onClick={browserHistory.goBack} /> </div> : void 0}
                                                   
 
                                     </div>

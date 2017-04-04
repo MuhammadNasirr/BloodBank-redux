@@ -19,14 +19,21 @@ class Moredetails extends React.Component {
         super(props);
 
         // this.logout = this.logout.bind(this);
-        this.state = { array: [], 
-            open: false,
-             value: 1 };
+        // this.state = { array: [], 
+        //     open: false,
+        //       };
         // this.state = {open: false};
           }
-  
+    
+    handleData(e) {
+        e.preventDefault();
+        
+        // var   bloodg = e.target.childNodes[0].nodeValue;
+        this.props.AllBlood()
+        // console.log(this.props.allinfo)
+     }
     render() {
-          this.props.AllBlood()
+         
 
         const style = {
             margin: 12,
@@ -39,10 +46,12 @@ class Moredetails extends React.Component {
         };
         return (
             <div>
+                        <RaisedButton label="Request" secondary={true} onClick={this.handleData.bind(this)} />
                 <MuiThemeProvider>
                     <div>
-                      
+                    
                         <Table>
+
                             <TableHeader>
                                 <TableRow>
                                     <TableHeaderColumn>ID</TableHeaderColumn>
@@ -59,8 +68,9 @@ class Moredetails extends React.Component {
                             </TableHeader>
 
                             <TableBody>
-                                   {/*{ console.log(this.props.allinfo)}*/}
+                                {/*{console.log(this.props.allinfo)}*/}
                                 {this.props.allinfo.map((val, i) => {
+                                    console.log(this.props.allinfo)
                                     return (
                                         <TableRow>
                                             <TableRowColumn key={i}>{i + 1}</TableRowColumn>
@@ -98,9 +108,8 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        AllBlood: (blood) => {
-            // console.log(userSignin)
-            dispatch(allBlood(blood));
+        AllBlood: () => {
+            dispatch(allBlood());
         }
     
     };

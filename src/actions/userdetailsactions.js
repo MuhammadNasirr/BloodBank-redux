@@ -2,24 +2,21 @@ import * as firebase from 'firebase';
 import actionTypes from '../reducers/actionTypes';
 
 export function allBlood(blood) {
-  return dispatch=>{
-    var array=[];
-    // alert("asdhjfajklhf")
-     firebase.database().ref().child('Bloodgroup/').on('value', (data) => {
-            var obj = data.val();
-
+  return dispatch => {
+    var array = [];
+      firebase.database().ref().child('Bloodgroup/').on('value', (data) => {
+            var obj = data.val()
             // console.log(obj)
-
-            for (var prop in obj) {
-
-              array.push(obj[prop]);
-              // console.log("asdasd");
-// console.log(array)
-            }
+            for(var a in obj){
+      for(var b in obj[a]){
+        array.push(obj[a][b]);
+        //  array.push(obj)
+      }    
+  console.log(array)
+  }
           })
       dispatch(newalldonoraction(array))
   }
-
 }
 export function takeBlood(bloodgroup) {
   return dispatch => {
@@ -61,38 +58,33 @@ export function takeBlood(bloodgroup) {
         donors.push(['O-']);
         break;
       }
+      default: {
+        return bloodgroup
+      }
     }
+      // setTimeout(takeBlood(),3000)
     donors.map((val, index) => {
       return val.map((v, i) => {
         return (
           firebase.database().ref().child('Bloodgroup/' + v + '/').on('value', (data) => {
             var obj = data.val();
-
             console.log(obj)
-
             for (var prop in obj) {
-
               arr.push(obj[prop]);
               console.log(arr);
-
             }
           })
         )
       })
     })
-    dispatch(newdonoraction(arr))
-   
+    dispatch(newdonoraction(arr)) 
   }
- 
 }
-
-
 function newalldonoraction(allinfo) {
   return {
     type: actionTypes.AllGetDonorInfo,
     allinfo
   }
-  console.log(allinfo)
 }
 function newdonoraction(donorinfo) {
   return {
